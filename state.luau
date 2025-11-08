@@ -19,10 +19,25 @@ type self = {
 local State = {}
 State.__index = State
 
+
+--[=[
+	Get the current state.
+	
+	@param self : state
+	
+	@return T
+]=]
 function State.read(self: self)
 	return self.value
 end
 
+--[=[
+	Set the state to a new state
+	
+	@param self : state 
+	@param new_value : T
+	@param force : boolean
+]=]
 function State.write(self: self, new_value: any?, force: boolean?)
 	if not self._enabled then return end
 
@@ -40,6 +55,12 @@ function State.write(self: self, new_value: any?, force: boolean?)
 	end
 end
 
+--[=[
+	Send a value to all the callbacks without changing state
+	
+	@param self : state 
+	@param ... : any
+]=]
 function State.send(self: self, ...: any)
 	if not self._enabled then return end
 	local callbacks = self._callbacks
@@ -49,6 +70,15 @@ function State.send(self: self, ...: any)
 	end
 end
 
+--[=[
+	Listen to when the state changes and for any sent values
+	
+	@param self : state 
+	@param callback : ( value : any )
+	@param call : boolean ?
+	
+	@return () -> ()
+]=]
 function State.listen(self: self, callback: (value: any) -> (), call : boolean?)
 	table.insert(self._callbacks, callback)
 	
@@ -63,14 +93,36 @@ function State.listen(self: self, callback: (value: any) -> (), call : boolean?)
 	end
 end
 
+--[=[
+	Enable or disable the state
+	
+	@param self : state 
+	@param bool : boolean
+]=]
 function State.enabled(self: self, bool: boolean)
 	self._enabled = bool
 end
 
+--[=[
+	Check if the state is a value
+	
+	@param self : state 
+	@param query : any
+	
+	@return boolean
+]=]
 function State.is(self : self, query : any)
 	return self.value == query
 end
 
+--[=[
+	Check if the state is not a value
+	
+	@param self : state 
+	@param query : any
+	
+	@return boolean
+]=]
 function State.isNot(self : self, query : any)
 	return self.value ~= query
 end
