@@ -394,11 +394,11 @@ phase:write("Ended")
 
 ## 🧩 Best Practices
 
-✅ **Place `State` in `ReplicatedStorage.Shared`** for access by both client and server.
-✅ **Use one `State` per reactive variable** instead of large data tables.
-✅ **Disconnect listeners** when objects (like GUIs or players) are destroyed.
-✅ **Combine with `BindableEvents` or Signals** if you need cross-system communication.
-✅ **Keep it simple** — `State` is designed to remain lightweight.
+✅ **Place `State` in `ReplicatedStorage.Shared`** for access by both client and server.<br>
+✅ **Use one `State` per reactive variable** instead of large data tables.<br>
+✅ **Disconnect listeners** when objects (like GUIs or players) are destroyed.<br>
+✅ **Combine with `BindableEvents` or Signals** if you need cross-system communication.<br>
+✅ **Keep it simple** — `State` is designed to remain lightweight.<br>
 
 ---
 
