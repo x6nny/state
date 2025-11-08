@@ -8,6 +8,9 @@ type Struct<T> = {
 	enabled: (self: Struct<T>, bool: boolean) -> (),
 	is: (self: Struct<T>, query : any) -> boolean,
 	isNot: (self : Struct<T>, query : any) -> boolean,
+	type: (self : Struct<T>) -> string,
+	typeIs: (self : Struct<T>, type : string) -> boolean,
+	typeIsNot: (self : Struct<T>, type : string) -> boolean,
 }
 
 type self = {
@@ -127,10 +130,46 @@ function State.isNot(self : self, query : any)
 	return self.value ~= query
 end
 
+--[=[
+	Get the type of the value
+	
+	@param self : state 
+	
+	@return string
+]=]
+function State.type(self : self)
+	return typeof(self.value)
+end
+
+--[=[
+	Check if the state is a certain type
+	
+	@param self : state 
+	@param type : string
+	
+	@return boolean
+]=]
+function State.typeIs(self : self, type : string)
+	return State.type(self) == type
+end
+
+--[=[
+	Check if the state is not a certain type
+	
+	@param self : state 
+	@param type : string
+	
+	@return boolean
+]=]
+function State.typeIsNot(self : self, type : string)
+	return State.type(self) ~= type
+end
+
 return function <T> (value: T): Struct<T>
 	return setmetatable({
 		value = value,
 		_enabled = true,
 		_callbacks = {}    
 	}, State) :: any
+
 end
