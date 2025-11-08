@@ -7,10 +7,10 @@ A simple, yet versatile state class.
 ---
 
 # Features
-- ```state:read()```
-- ```state:write()```
-- ```state:listen()```
-- ```state:send()```
-- ```state:enabled()```
-- ```state:is()```
-- ```state:isNot()```
+- ```state:read() -> T```
+- ```state:write(value : T, force : boolean?)```
+- ```state:listen(callback : (value : T, old_value : T) -> ()) -> ()```
+- ```state:send(value : T)```
+- ```state:enabled(enabled : boolean)```
+- ```state:is(value : T) -> boolean```
+- ```state:isNot(value : T) -> boolean```
