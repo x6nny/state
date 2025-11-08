@@ -1,7 +1,3 @@
-Sure — here’s an expanded and more in-depth version of your README. It adds clear explanations, usage examples, and implementation details while keeping your minimal, elegant style intact.
-
----
-
 # state
 
 A simple, yet versatile **state management class** for Lua.
