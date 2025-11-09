@@ -99,7 +99,7 @@ Checks if the type differs.
 ```lua
 local State = require(game.ReplicatedStorage.Shared.State)
 
-local health = State.new(100)
+local health = State(100)
 
 health:listen(function(new, old)
 	print(`Health changed from {old} to {new}`)
@@ -307,7 +307,7 @@ Automatically update a `TextLabel` based on state changes.
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local State = require(ReplicatedStorage.Shared.State)
 
-local clicks = State.new(0)
+local clicks = State(0)
 local label = script.Parent:WaitForChild("ClickCount") :: TextLabel
 local button = script.Parent:WaitForChild("ClickButton") :: TextButton
 
@@ -334,7 +334,7 @@ local State = require(game.ReplicatedStorage.Shared.State)
 local playerCoins: { [Player]: any } = {}
 
 Players.PlayerAdded:Connect(function(player)
-	local coins = State.new(0)
+	local coins = State(0)
 	playerCoins[player] = coins
 
 	coins:listen(function(new, old)
@@ -361,7 +361,7 @@ end)
 ```lua
 --!strict
 local State = require(game.ReplicatedStorage.Shared.State)
-local phase = State.new("Waiting")
+local phase = State("Waiting")
 
 phase:listen(function(new, old)
 	print(`Game phase changed from {old} -> {new}`)
