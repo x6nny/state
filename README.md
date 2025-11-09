@@ -1,4 +1,4 @@
-#⚡ state
+# ⚡ state
 
 A simple, yet versatile **state management class** for Lua / Luau.
 
