@@ -19,7 +19,7 @@ The `State` class provides:
 * Optional **forced updates**
 * Runtime **enable/disable** control
 * Lightweight **type utilities**
-* Full **typed support** for Luau and EmmyLua
+* Full **typed support** for Luau
 
 ---
 
